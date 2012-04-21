@@ -1,0 +1,69 @@
+Index: libavcodec/dca.c
+===================================================================
+--- libavcodec/dca.c	(Revision 11505)
++++ libavcodec/dca.c	(Arbeitskopie)
+@@ -67,8 +67,13 @@
+ #define DCA_LFE 0x80
+ 
+ #define HEADER_SIZE 14
+-#define CONVERT_BIAS 384
+ 
++#ifdef CONFIG_AUDIO_NONSHORT
++    #define CONVERT_BIAS 0
++#else
++    #define CONVERT_BIAS 384
++#endif
++
+ #define DCA_MAX_FRAME_SIZE 16383
+ 
+ /** Bit allocation */
+@@ -1137,7 +1142,11 @@
+ {
+ 
+     int i, j, k;
++#ifdef CONFIG_AUDIO_NONSHORT
++    float *samples = data;
++#else
+     int16_t *samples = data;
++#endif
+     DCAContext *s = avctx->priv_data;
+     int channels;
+ 
+@@ -1165,19 +1174,25 @@
+     }
+ 
+     avctx->channels = channels;
+-    if(*data_size < (s->sample_blocks / 8) * 256 * sizeof(int16_t) * channels)
++    if(*data_size < (s->sample_blocks / 8) * 256 * sizeof(samples[0]) * channels)
+         return -1;
+     *data_size = 0;
+     for (i = 0; i < (s->sample_blocks / 8); i++) {
+         dca_decode_block(s);
++#ifndef CONFIG_AUDIO_NONSHORT
+         s->dsp.float_to_int16(s->tsamples, s->samples, 256 * channels);
++#endif
+         /* interleave samples */
+         for (j = 0; j < 256; j++) {
+             for (k = 0; k < channels; k++)
++#ifdef CONFIG_AUDIO_NONSHORT
++                samples[k] = s->samples[j + k * 256] / 32768.0f;
++#else
+                 samples[k] = s->tsamples[j + k * 256];
++#endif
+             samples += channels;
+         }
+-        *data_size += 256 * sizeof(int16_t) * channels;
++        *data_size += 256 * sizeof(samples[0]) * channels;
+     }
+ 
+     return buf_size;
+@@ -1237,6 +1252,10 @@
+         avctx->channels = avctx->request_channels;
+     }
+ 
++#ifdef CONFIG_AUDIO_NONSHORT
++    avctx->sample_fmt = SAMPLE_FMT_FLT;
++#endif
++
+     return 0;
+ }

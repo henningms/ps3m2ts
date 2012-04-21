@@ -1,0 +1,104 @@
+eac3to v3.17
+command line: eac3to.exe
+------------------------------------------------------------------------------
+eac3to v3.17, freeware by madshi.net
+
+- can show information about audio, video, VOB/EVO/(M2)TS and MKV files
+- can decode and encode various audio formats
+- can remove dialog normalization from AC3, E-AC3, DTS and TrueHD tracks
+- can extract AC3 stream from Blu-Ray TrueHD/AC3 tracks
+- can extract TrueHD stream from Blu-Ray TrueHD/AC3 tracks
+- can extract DTS core from DTS-HD tracks
+- can remove DTS zero padding and repair outdated DTS-ES headers
+- can apply positive or negative audio delays
+- can reduce bitdepth of decoded audio data by using TPDF dithering
+- can resample decoded audio data (using SSRC or r8brain)
+- can apply/reverse PAL speedup on decoded audio data (SSRC/r8brain)
+- can demux video / audio tracks of EVO/VOB/(M2)TS and MKV sources
+- can list available titles of Blu-Ray and HD DVD discs
+- can extract Blu-Ray and HD DVD chapter information and subtitles
+- can mux MPEG2, VC-1 and h264 video tracks to Matroska
+- can remove pulldown flags from MPEG2, VC-1 and h264 video tracks
+
+eac3to sourcefile[+sourcefile2] [trackno:] [destfile|stdout] [-options]
+
+Examples:
+eac3to source.pcm destination.flac
+eac3to source.thd destination.flac destination.ac3
+eac3to source.evo 1: chapters.txt 2: video.mkv 3: audio.flac 5: subtitle.sup
+eac3to feature_1.evo+feature_2.evo movie.mkv
+eac3to blurayMovieFolder movie.mkv
+
+Options:
+-448               use e.g. "192", "448" or "640" kbps for AC3 encoding
+-768               use "768" or "1536" kbps for DTS encoding
+-core              extract the DTS core of a DTS-HD track
++/-100ms           apply a positive or negative audio delay
++/-3dB             apply a positive or negative audio gain (volume change)
+-0,1,2,3,4,5       remap the channels to the specified order
+-edit=0:00:00,0ms  loops or removes audio data at the specified runtime
+-silence/-loop     forces usage of silence (or looping) for audio edits
+-down6             downmix 7 or 8 channels to 6 channels
+-down2             downmix multi channel audio to stereo (Dolby Pro Logic II)
+-phaseShift        shift phase (when doing stereo downmixing, see "down2")
+-mixlfe            mix LFE in (when doing stereo downmixing, see "down2")
+-down16            downconvert decoded audio data to 14..23 bit
+-slowdown          convert 25.000 and 24.000 content to 23.976 fps
+-speedup           convert 23.976 and 24.000 content to 25.000 fps
+-23.976/...        define source fps to be "23.976", "24.000", "25.000", ...
+-changeTo24.000    change source fps to "23.976", "24.000", "25.000", ...
+-resampleTo48000   resample audio to "44100", "48000" or "96000" Hz
+-r8brain           use r8brain resampler instead of SSRC
+-quality=0.50      Nero AAC encoding quality (0.00 = lowest; 1.00 = highest)
+-8                 define PCM file to be "1".."8" channels
+-16                define PCM file to be "16" or "24" bit
+-little            define PCM file to be "little" or "big" endian
+-96000             define PCM file to be 44100, 48000, 96000 or 192000 Hz
+-override          forcefully overrides PCM auto detection with manual values
+-sonic/nero/...    force the use of a specific decoder (not recommended)
+-keepDialnorm      disables dialog normalization removal (not recommended)
+-decodeHdcd        decodes HDCD source track (usually 16 -> 20 bit)
+-demux             demuxes 1st video track and all audio and subtitle tracks
+-stripPulldown     strips the pulldown from MPEG2 video tracks
+-keepPulldown      disable removal of pulldown for MPEG2, h264 and VC-1 tracks
+-seekToIFrames     make all h264/AVC "I" frames seekable
+-check             checks if the source EVO/(M2)TS file is clean.
+-test              checks if the external filters are installed & working
+-lowPriority       moves processing to background/idle priority
+-shutdown          automatically shutdown the PC after processing is done
+
+Supported source formats:
+(1) RAW, (L)PCM
+(2) WAV (PCM, DTS and AC3), W64, RF64
+(3) AC3, E-AC3
+(4) DTS, DTS-ES, DTS-96/24, DTS-HD Hi-Res, DTS-HD Master Audio
+(5) MP1, MP2, MP3 audio
+(6) AAC audio
+(7) MLP, TrueHD, TrueHD/AC3
+(8) FLAC
+(9) EVO/VOB/(M2)TS and MKV
+
+Decoded audio data can be stored as / encoded to:
+(1) RAW, (L)PCM
+(2) WAV (PCM only), W64, RF64, AGM
+(3) WAVs (multiple mono WAV files, PCM only)
+(4) AC3
+(5) DTS
+(6) AAC
+(7) FLAC
+
+For best AC3, E-AC3 and AAC decoding you need:
+(1) Nero 7 (Nero 8 won't work!)
+(2) Nero HD DVD / Blu-Ray plugin
+
+For best DTS decoding you need:
+(1) ArcSoft DTS Decoder - version 1.1.0.0 or newer
+
+For DTS encoding you need:
+(1) SurCode DVD DTS - version 1.0.21 or newer
+
+For AAC encoding you need:
+(1) Nero AAC Encoder
+
+For video muxing you need:
+(1) Haali Matroska Muxer

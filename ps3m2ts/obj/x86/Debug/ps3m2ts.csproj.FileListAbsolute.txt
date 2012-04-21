@@ -1,0 +1,23 @@
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\bin\Debug\ps3m2ts.exe.config
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\bin\Debug\ps3m2ts.exe
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\bin\Debug\ps3m2ts.pdb
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\obj\x86\Debug\ps3m2ts.exe
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\obj\x86\Debug\ps3m2ts.pdb
+C:\Users\Henning\Documents\Visual Studio 2010\Projects\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.exe.config
+C:\Users\Henning\Documents\Visual Studio 2010\Projects\ps3m2ts\ps3m2ts\obj\x86\Debug\ps3m2ts.exe
+C:\Users\Henning\Documents\Visual Studio 2010\Projects\ps3m2ts\ps3m2ts\obj\x86\Debug\ps3m2ts.pdb
+C:\Users\Henning\Documents\Visual Studio 2010\Projects\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.exe
+C:\Users\Henning\Documents\Visual Studio 2010\Projects\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.pdb
+C:\Users\Henning\Documents\Visual Studio 2010\Projects\ps3m2ts\ps3m2ts\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.exe.config
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\obj\x86\Debug\ps3m2ts.exe
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\obj\x86\Debug\ps3m2ts.pdb
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.exe
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.pdb
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Henning\Downloads\ps3m2ts\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.exe.config
+C:\Users\Henning\Downloads\ps3m2ts\ps3m2ts\ps3m2ts\obj\x86\Debug\ps3m2ts.exe
+C:\Users\Henning\Downloads\ps3m2ts\ps3m2ts\ps3m2ts\obj\x86\Debug\ps3m2ts.pdb
+C:\Users\Henning\Downloads\ps3m2ts\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.exe
+C:\Users\Henning\Downloads\ps3m2ts\ps3m2ts\ps3m2ts\bin\Debug\ps3m2ts.pdb

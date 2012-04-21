@@ -1,0 +1,71 @@
+ENCODER-PLUGIN:
+
+-------------------------------------------------------------------------------
+
+// --- mandatory ---
+
+const
+  FORMAT_SIGNED_PCM_8  = $01;
+  FORMAT_SIGNED_PCM_16 = $02;
+  FORMAT_SIGNED_PCM_24 = $04;
+  FORMAT_SIGNED_PCM_32 = $08;
+  FORMAT_IEEE_32       = $10;
+  FORMAT_IEEE_64       = $20;
+
+// fetch information about the encoder plugin
+// all parameters must be set by the plugin
+// an encoder should support multiple encoding operations at the same time
+// if that's technically not possible, "threadSafe" must be set to "false"
+// "samplesPerFrame" set to e.g. 48000 signals that the encoder wants to
+// receive a full second worth of audio data with every "Encode" call
+function GetEncoderInformation (out encoderName           : pchar;  // 'Lame MP3 Encoder' (max 30 chars)
+                                out activationOption      : pchar;  // '-lame' (max 20 chars)
+                                out supportedInputFormats : dword;  // see above
+                                out outputFormat          : pchar;  // 'mp3' (max 10 chars)
+                                out samplesPerFrame       : dword;  // 48000 / 100
+                                out threadSafe            : bool;   // true
+                               ) : bool; stdcall;
+
+// get an instance of the encoder
+function OpenEncoder : dword; stdcall;
+
+// close the encoder and free all related resources
+function CloseEncoder (encoderHandle: dword) : bool; stdcall;
+
+// informs the encoder about the format of the incoming audio data
+function SetInputFormat (encoderHandle: dword; format, channelNo, channelMask: dword) : bool; stdcall;
+
+// is called by eac3to to encode one audio frame
+// so the number of samples in "inBuf" is defined by "samplesPerFrame"
+// the output buffer must be allocated by the encoder
+// the output buffer is not freed by eac3to
+// at the end of encoding "EncodeFrame" is repeatedly called with "inBuf = nil"
+// this is meant to flush any encoding buffers
+// the encoder can signal final completion by setting "outSize := 0"
+// the encoder must always return true, or else eac3to will abort processing
+function EncodeFrame (encoderHandle: dword; inBuf: pointer; out outBuf: pointer; out outSize: dword) : bool; stdcall;
+
+// --- optional ---
+
+type
+  TLogType = (ltInfo, ltWarning, ltError);
+  TLogFunc = procedure Log (logType: TLogType; text: wideString);
+
+// eac3to wants to share its log function with the encoder
+// in order to do so eac3to reports its log function address
+// if the encoder wants to output information to the screen
+// it should do so by using the official log function
+procedure SetLogFunction (logFunc: TLogFunc); stdcall;
+
+// unknown options are passed through to the encoder
+// if the encoder supports the option, it must return true
+// otherwise eac3to will abort processing
+function ParseOption (encoderHandle: dword; option: pchar) : bool; stdcall;
+
+// if the encoder supports the specified bitrate, it must return true
+function SetBitrate (encoderHandle: dword; bitrate: dword) : bool; stdcall;
+
+// returns an error description, in case one of the APIs failed
+function GetErrorInformation (encoderHandle: dword; out errorText: pchar) : bool; stdcall;
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,95 @@
+Index: libavcodec/ac3dec.c
+===================================================================
+--- libavcodec/ac3dec.c	(Revision 1818)
++++ libavcodec/ac3dec.c	(Arbeitskopie)
+@@ -229,6 +229,11 @@
+     dsputil_init(&s->dsp, avctx);
+     av_init_random(0, &s->dith_state);
+ 
++#ifdef CONFIG_AUDIO_NONSHORT
++    avctx->sample_fmt = SAMPLE_FMT_FLT;
++    s->add_bias = 0.0f;
++    s->mul_bias = 1.0f;
++#else
+     /* set bias values for float to int16 conversion */
+     if(s->dsp.float_to_int16 == ff_float_to_int16_c) {
+         s->add_bias = 385.0f;
+@@ -237,6 +242,7 @@
+         s->add_bias = 0.0f;
+         s->mul_bias = 32767.0f;
+     }
++#endif
+ 
+     /* allow downmixing to stereo or mono */
+     if (avctx->channels > 0 && avctx->request_channels > 0 &&
+@@ -1143,11 +1149,13 @@
+     /* apply scaling to coefficients (headroom, dynrng) */
+     for(ch=1; ch<=s->channels; ch++) {
+         float gain = 2.0f * s->mul_bias;
++#ifndef CONFIG_AUDIO_NODRC
+         if(s->channel_mode == AC3_CHMODE_DUALMONO) {
+             gain *= s->dynamic_range[ch-1];
+         } else {
+             gain *= s->dynamic_range[0];
+         }
++#endif
+         for(i=0; i<s->end_freq[ch]; i++) {
+             s->transform_coeffs[ch][i] *= gain;
+         }
+@@ -1161,6 +1169,7 @@
+         ac3_downmix(s);
+     }
+ 
++#ifndef CONFIG_AUDIO_NONSHORT
+     /* convert float to 16-bit integer */
+     for(ch=0; ch<s->out_channels; ch++) {
+         for(i=0; i<256; i++) {
+@@ -1168,6 +1177,7 @@
+         }
+         s->dsp.float_to_int16(s->int_output[ch], s->output[ch], 256);
+     }
++#endif
+ 
+     return 0;
+ }
+@@ -1178,7 +1188,11 @@
+ static int ac3_decode_frame(AVCodecContext * avctx, void *data, int *data_size, uint8_t *buf, int buf_size)
+ {
+     AC3DecodeContext *s = avctx->priv_data;
++#ifdef CONFIG_AUDIO_NONSHORT
++    float *out_samples = (float *)data;
++#else
+     int16_t *out_samples = (int16_t *)data;
++#endif
+     int i, blk, ch, err;
+ 
+     /* initialize the GetBitContext with the start of valid AC-3 Frame */
+@@ -1252,9 +1266,13 @@
+         /* interleave output samples */
+         for (i = 0; i < 256; i++)
+             for (ch = 0; ch < s->out_channels; ch++)
++#ifdef CONFIG_AUDIO_NONSHORT
++                *(out_samples++) = s->output[ch][i];
++#else
+                 *(out_samples++) = s->int_output[ch][i];
++#endif
+     }
+-    *data_size =  s->num_blocks * 256 * avctx->channels * sizeof (int16_t);
++    *data_size =  s->num_blocks * 256 * avctx->channels * sizeof (out_samples[0]);
+     return s->frame_size;
+ }
+ 
+Index: libavcodec/ac3dec.h
+===================================================================
+--- libavcodec/ac3dec.h	(Revision 1818)
++++ libavcodec/ac3dec.h	(Arbeitskopie)
+@@ -224,7 +224,9 @@
+     DECLARE_ALIGNED_16(float, tmp_output[AC3_BLOCK_SIZE * 24]);                     ///< temp storage for output before windowing
+     DECLARE_ALIGNED_16(float, tmp_imdct[AC3_BLOCK_SIZE * 24]);                      ///< temp storage for imdct transform
+     DECLARE_ALIGNED_16(float, output[AC3_MAX_CHANNELS][AC3_BLOCK_SIZE]);            ///< output after imdct transform and windowing
++#ifndef CONFIG_AUDIO_NONSHORT
+     DECLARE_ALIGNED_16(int16_t, int_output[AC3_MAX_CHANNELS][AC3_BLOCK_SIZE]);      ///< final 16-bit integer output
++#endif
+ ///@}
+ } AC3DecodeContext;
+ 

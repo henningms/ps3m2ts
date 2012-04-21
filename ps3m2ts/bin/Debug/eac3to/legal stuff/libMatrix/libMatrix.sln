@@ -1,0 +1,16 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{B6C07BAD-8F74-449D-9907-596DA1428A5E}") = "libMatrix", "libMatrix.vcproj", "{72293C33-42AB-4156-91D3-D4AF50287DF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72293C33-42AB-4156-91D3-D4AF50287DF9}.Release|Win32.ActiveCfg = Release|Win32
+		{72293C33-42AB-4156-91D3-D4AF50287DF9}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+r8brain License Agreement
+
+The use and redistribution of "r8brain" ("Software") is subject to the following conditions:
+
+1. All copyrights to the Software are exclusively owned by the Author - Aleksey Vaneev. All rights not expressly granted here are reserved by Aleksey Vaneev.
+
+2. Permission is granted to anyone to use the Software for any purpose, including commercial usage.
+
+3. You may not sell the Software or earn any direct or indirect profit from its distribution.
+
+4. You may not copy and distribute the Software nor any of its derivatives in whole or in part unless:
+
+a) the copyright notice and this list of conditions appear on all copies;
+b) copies are complete and unaltered with all messages intact; and
+c) any distribution made by you hereunder is expressly made subject to an acknowledgment by you and the recipient of such distribution that the Author retains exclusive ownership of the Software including all intellectual property rights therein, at all times.
+
+5. Separate use and redistribution of "r8b.dll" module that is distributed with the Software is not covered by this license. Separate license for "r8b.dll" is available in "r8b_license.txt" file.
+
+6. THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT OR ARISING FROM A COURSE OF DEALING, USAGE, TRADE OR PRACTICE. Some jurisdictions do not allow the exclusion of implied warranties, so the above disclaimer may not apply to you.
+
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+7. If you do not agree with the terms of this License Agreement you must remove the Software files from your storage devices and cease to use the product.
+
+8. All questions concerning this License Agreement shall be directed to:
+
+e-mail: info@voxengo.com

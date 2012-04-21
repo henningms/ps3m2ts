@@ -1,0 +1,23 @@
+============
+FLAC - 1.2.1
+============
+
+This is the Win32 binary development release for the FLAC project.
+
+The reference encoder/decoder libraries (libFLAC, libFLAC++, libogg)
+are released under Xiph's BSD variant (see COPYING.Xiph).  All other
+programs, libraries, and plugins are released under the GPL (see
+COPYING.GPL) except the Winamp 2 plugin which is LGPL (see
+COPYING.LGPL).  The documentation is released under the FDL (see
+COPYING.FDL).  See
+
+	doc\html\index.html
+
+for full documentation, including how to obtain the source
+code.
+
+A summary of the contents is as follows:
+
+lib              The development libraries
+doc\html         FLAC HTML documentation
+include          The FLAC headers for use with libFLAC and libFLAC++

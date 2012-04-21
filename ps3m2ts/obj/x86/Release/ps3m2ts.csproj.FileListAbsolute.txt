@@ -1,0 +1,6 @@
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\bin\Release\ps3m2ts.exe.config
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\bin\Release\ps3m2ts.exe
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\bin\Release\ps3m2ts.pdb
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\obj\x86\Release\ps3m2ts.exe
+C:\Users\Stu\Documents\Visual Studio 2010\Projects\TestsApps\ps3m2ts\ps3m2ts\obj\x86\Release\ps3m2ts.pdb

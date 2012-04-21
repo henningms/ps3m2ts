@@ -1,0 +1,7 @@
+c:\users\henning\documents\visual studio 2010\Projects\ps3video\ps3video\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\henning\documents\visual studio 2010\Projects\ps3video\ps3video\bin\Debug\ps3video.exe
+c:\users\henning\documents\visual studio 2010\Projects\ps3video\ps3video\bin\Debug\ps3video.pdb
+c:\users\henning\documents\visual studio 2010\Projects\ps3video\ps3video\obj\x86\Debug\ps3video.exe
+c:\users\henning\documents\visual studio 2010\Projects\ps3video\ps3video\obj\x86\Debug\ps3video.pdb
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\bin\Debug\ps3video.exe.config
+C:\Users\Henning\documents\visual studio 2010\Projects\ps3video\ps3video\bin\Debug\ps3m2ts.exe.config
